@@ -292,17 +292,17 @@ python create_lm_data.py --input_file /{path}/coqa_dev.txt --output_file /{path}
 
 ```bash
 下载测试集
-python download_cnn_dailymail.py --dir ./cnn_dailymail/ --split test
+python download_cnn_dailymail.py --dir ./my_cnn_dailymail/ --split test
 
 下载训练集
-python download_cnn_dailymail.py --dir ./cnn_dailymail/ --split train
+python download_cnn_dailymail.py --dir ./my_cnn_dailymail/ --split train
 ```
 
 从训练集中随机采用10000条样本作为最终的微调的训练集，使用`cnn_dataset_sampler.py`脚本进行训练的采样操作，生成新的训练集，示例代码如下：
 
 ```bash
 GPT-2 small和GPT-2 medium模型的训练集中seq_length=1024, 因此该脚本中设置max_length=1022
-python cnn_dataset_sampler.py --input_path="/{path}/cnn_train.txt"
+python cnn_dataset_sampler.py --input_path="/my_cnn_dailymail/train.txt"
                               --output_path="/{path}/cnn_train_hint_small.txt"
                               --replace_hint="true"
                               --sample="true"
@@ -328,7 +328,7 @@ python cnn_dataset_sampler.py --input_path="/{path}/cnn_train.txt"
 示例代码如下：
 
 ```bash
-python create_summary_data.py --input_file /{path}/cnn_dailymail_test.txt --output_file /{path}/cnn_dailymail-test-mindrecord --num_splits 1 --max_length 1024 --vocab_file={path} --merge_file={path} --mode 'cnn_dailymail'
+python create_summary_data.py --input_file /my_cnn_dailymail/test.txt --output_file /my_cnn_dailymail/cnn_dailymail-test-mindrecord --num_splits 1 --max_length 1024 --vocab_file='./third_party/gpt2-vocab.json' --merge_file='./third_party/gpt2-merges.txt' --mode 'cnn_dailymail'
 ```
 
 ### Translation 任务
@@ -793,7 +793,7 @@ bash scripts/run_summarization.sh   --device_target="Ascend"
                                   --eval_type="finetuned"
                                   --load_finetune_ckpt_path={load_eval_ckpt_path}
                                   --eval_data_file_path={eval_data_file_path}
-                                  --tokenizer_file_path={tokenizer_file_path}
+                                  --tokenizer_file_path='./third_party/'
 
 ```
 

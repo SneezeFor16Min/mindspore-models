@@ -32,14 +32,14 @@ echo $output_log >> $output_log
 # checkpoint path
 save_finetune_ckpt_path=""
 load_pretrain_ckpt_path=""
-load_eval_ckpt_path=""
+load_eval_ckpt_path="./convert_tf_ckpt/mindspore_gpt2_small.ckpt"
 
 # dataset path
 train_data_file_path=""
-eval_data_file_path=""
+eval_data_file_path="./my_cnn_dailymail/cnn_dailymail-test-mindrecord"
 
 # tokenizer path
-tokenizer_file_path=""
+tokenizer_file_path="./third_party/"
 
 PROJECT_DIR=$(cd "$(dirname "$0")" || exit; pwd)
 export GLOG_log_dir=${CUR_DIR}/ms_log

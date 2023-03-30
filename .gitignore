@@ -107,3 +107,12 @@ mindspore/lite/test/do_test/
 
 # lite opencl compile file
 *.cl.inc
+
+# dataset
+/research/nlp/gpt2/my_cnn_dailymail/
+# log file
+/research/nlp/gpt2/ms_log/
+# downloaded model
+/research/nlp/gpt2/models/*
+# converted model
+/research/nlp/gpt2/convert_tf_ckpt/*.npy
