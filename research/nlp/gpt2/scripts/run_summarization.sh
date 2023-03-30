@@ -63,4 +63,4 @@ python ${PROJECT_DIR}/../run_summarization.py  \
     --load_finetune_ckpt_path=$load_eval_ckpt_path \
     --train_data_file_path=$train_data_file_path \
     --eval_data_file_path=$eval_data_file_path \
-    --tokenizer_file_path=$tokenizer_file_path  >> $output_log 2>&1 &
+    --tokenizer_file_path=$tokenizer_file_path  | tee $output_log
