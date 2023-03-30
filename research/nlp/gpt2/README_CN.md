@@ -953,7 +953,7 @@ math
 numpy
 copy
 collections
-re
+regex
 rouge 1.0.0
 datasets >=0.4.0
 json

@@ -15,7 +15,7 @@
 """Data operations"""
 import mindspore.common.dtype as mstype
 import mindspore.dataset as de
-import mindspore.dataset.transforms as C
+import mindspore.dataset.transforms.c_transforms as C
 
 from .finetune_eval_config import gpt2_net_cfg
 
