@@ -43,7 +43,7 @@ tokenizer_file_path="./third_party/"
 
 PROJECT_DIR=$(cd "$(dirname "$0")" || exit; pwd)
 export GLOG_log_dir=${CUR_DIR}/ms_log
-export GLOG_logtostderr=0
+export GLOG_logtostderr=1
 python ${PROJECT_DIR}/../run_summarization.py  \
     --device_target="Ascend" \
     --device_id=1 \
