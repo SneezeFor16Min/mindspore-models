@@ -163,7 +163,7 @@ def modify_paramdict(param_dict, mode="zero-shot", model_prefix="gpt2."):
             final_param_dict[name_remove_prefix] = param_dict[name]
             if embedding_name in name and name_prefix == model_prefix:
                 embedding_name_old = name
-        final_param_dict[embedding_name] = param_dict[embedding_name_old]
+                final_param_dict[embedding_name] = param_dict[embedding_name_old]
     else:
         raise ValueError("mode should be [zero-shot, finetuned]")
     return final_param_dict
