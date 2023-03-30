@@ -57,7 +57,7 @@ python ${PROJECT_DIR}/../run_summarization.py  \
     --top_p="1.0" \
     --generate_length=100 \
     --temperature="1.0" \
-    --eval_type="zero-shot" \
+    --eval_type="finetuned" \
     --save_finetune_ckpt_path=$save_finetune_ckpt_path \
     --load_pretrain_ckpt_path=$load_pretrain_ckpt_path \
     --load_finetune_ckpt_path=$load_eval_ckpt_path \

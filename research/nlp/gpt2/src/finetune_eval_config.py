@@ -19,8 +19,8 @@ import mindspore.common.dtype as mstype
 from .GPT2_model import GPT2Config
 
 cfg = edict({
-    'gpt2_network': 'large',
-    'optimizer': 'Lamb',
+    'gpt2_network': 'small',
+    'optimizer': 'AdamWeightDecay',
     'AdamWeightDecay': edict({
         'learning_rate': 5e-5,
         'end_learning_rate': 1e-7,
