@@ -144,7 +144,6 @@ class GlobalNorm(nn.Cell):
 
     def __init__(self, params, config):
         super(GlobalNorm, self).__init__()
-        self.norm = nn.Norm()
         self.hyper_map = C.HyperMap()
         self.is_pipeline = context.get_auto_parallel_context("pipeline_stages") > 1
         self.is_data_parallel = context.get_auto_parallel_context("parallel_mode") == ParallelMode.DATA_PARALLEL
@@ -422,6 +421,15 @@ def add_context_args_mode(opt):
                      choices=['data_parallel', "semi_auto_parallel", "auto_parallel"], help="The parallel context mode")
 
 
+def add_search_mode_args_mode(opt):
+    """Add auto parallel context search mode args params"""
+    opt.add_argument("--search_mode",
+                     type=str,
+                     default="recursive_programming",
+                     choices=["recursive_programming", "sharding_propagation", "dynamic_programming"],
+                     help="The auto parallel context search mode")
+
+
 def add_downstream_params(opt):
     opt.add_argument("--eval_task",
                      help="Enable evaluating the tasks. Currently supports WPLC, C3.",
@@ -570,6 +578,7 @@ def get_args(inference=False):
                         default=6000,
                         help="Set the hccl build time out, only effective on Ascend. Default 6000")
     add_context_args_mode(parser)
+    add_search_mode_args_mode(parser)
     add_training_params(parser)
     add_retrain_params(parser)
     if inference:

@@ -22,8 +22,6 @@ from mindspore.ops import functional as F
 from mindspore.common.initializer import initializer
 from mindspore.common.tensor import Tensor
 from mindspore.common.parameter import Parameter, ParameterTuple
-from mindspore._checkparam import Validator as validator
-from mindspore._checkparam import Rel
 from mindspore.nn.optim.optimizer import Optimizer
 
 _adam_opt = C.MultitypeFuncGraph("adam_opt")
@@ -41,23 +39,18 @@ def _update_run_kernel(opt, clip_value, beta1, beta2, eps, lr, weight_decay,
     success = True
     if optim_filter:
         if decay_flags:
-            next_param = opt(param, m, v, lr, beta1, beta2, eps, weight_decay,
-                             P.Cast()(gradient, mstype.float16), clip_value)
+            next_param = opt(param, m, v, lr, beta1, beta2, eps, weight_decay, gradient, clip_value)
         else:
-            next_param = opt(param, m, v, lr, beta1, beta2, eps, 0.0,
-                             P.Cast()(gradient, mstype.float16), clip_value)
+            next_param = opt(param, m, v, lr, beta1, beta2, eps, 0.0, gradient, clip_value)
         return F.depend(success, next_param)
     return success
 
 
 def _check_param_value(beta1, beta2, eps, prim_name):
     """Check the type of inputs."""
-    validator.check_value_type("beta1", beta1, [float], prim_name)
-    validator.check_value_type("beta2", beta2, [float], prim_name)
-    validator.check_value_type("eps", eps, [float], prim_name)
-    validator.check_float_range(beta1, 0.0, 1.0, Rel.INC_NEITHER, "beta1", prim_name)
-    validator.check_float_range(beta2, 0.0, 1.0, Rel.INC_NEITHER, "beta2", prim_name)
-    validator.check_positive_float(eps, "eps", prim_name)
+    assert isinstance(beta1, float) and 0 <= beta1 <= 1, "beta1 should between 0 and 1"
+    assert isinstance(beta2, float) and 0 <= beta2 <= 1, "beta2 should between 0 and 1"
+    assert isinstance(eps, float) and eps > 0, "eps should be bigger than 0"
 
 
 class AdamWeightDecayOp(Optimizer):

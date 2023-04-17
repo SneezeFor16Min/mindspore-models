@@ -2,7 +2,15 @@
 
 ## Welcome to the Model Zoo for MindSpore
 
+The MindSpore models repository provides different task domains, classic SOTA model implementations and end-to-end solutions. The purpose is to make it easier for MindSpore users to use MindSpore for research and product development.
+
 In order to facilitate developers to enjoy the benefits of MindSpore framework, we will continue to add typical networks and some of the related pre-trained models. If you have needs for the model zoo, you can file an issue on [gitee](https://gitee.com/mindspore/mindspore/issues) or [MindSpore](https://bbs.huaweicloud.com/forum/forum-1076-1.html), We will consider it in time.
+
+| Directory               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+|-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [official](official)    | • Official maintenance, iteratively updated with the MindSpore version, ensure that no problem in accuracy and performance for released version<br/>• Recommended writing style, use the latest MindSpore interface and recommended features, ensure faster performance while maintaining code readability<br/>• Detailed network information and documentation, including but not limited to model description, dataset usage, specification support, accuracy and performance data, network checkpoint files, MindIR files, etc                  |
+| [research](research)    | • Passed the acceptance test in the older MindSpore version, indicate supported MindSpore versions in the README<br/>• Maintained and upgraded on demand, it will not be updated iteratively with the MindSpore version, but only adapt to the corresponding interface changes, Maintenance support is provided by MindSpore developers<br/>• Relatively detailed network information and documentation, including but not limited to model description, dataset usage, specification support, accuracy and performance data, network checkpoint files, MindIR files, etc |
+| [community](community)  | • Contributed by ecological developer, maintained and upgraded on demand, indicate supported MindSpore versions in the README<br/>• Model file is not necessarily provided                                                                                                                                                                                                                                                                                                                                                                         |
 
 - SOTA models using the latest MindSpore APIs
 
@@ -26,7 +34,7 @@ In order to facilitate developers to enjoy the benefits of MindSpore framework, 
 | Recommendation | Recommender System | [naml](https://gitee.com/mindspore/models/tree/master/research/recommend/naml) |✅| ✅ |   |
 | Recommendation | Recommender System | [ncf](https://gitee.com/mindspore/models/tree/master/research/recommend/ncf) |✅| ✅ |   |
 | Recommendation | Recommender System | [tbnet](https://gitee.com/mindspore/models/tree/master/official/recommend/Tbnet) |✅| ✅ |   |
-| Image | Image Classification | [alexnet](https://gitee.com/mindspore/models/tree/master/official/cv/Alexnet) |✅| ✅ |   |
+| Image | Image Classification | [alexnet](https://gitee.com/mindspore/models/tree/master/research/cv/Alexnet) |✅| ✅ |   |
 | Image | Image Denoise | [brdnet](https://gitee.com/mindspore/models/tree/master/research/cv/brdnet) |✅|   |   |
 | Image | Object Detection | [centerface](https://gitee.com/mindspore/models/tree/master/research/cv/centerface) |✅| ✅ | ✅ |
 | Image | Image Classification | [cnn_direction_model](https://gitee.com/mindspore/models/tree/master/research/cv/cnn_direction_model) |✅| ✅ |   |
